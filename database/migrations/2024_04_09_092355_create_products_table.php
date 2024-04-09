@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('trademark_id')
+                    ->constrained()
+                    ->cascadeOnDetele();
+            $table->foreignId('unit_id')
+                    ->constrained()
+                    ->cascadeOnDetele();
+            $table->string('name', 100);
+            $table->integer('amountunit');
+            $table->integer('amount');
+            $table->float('price', 8, 2);
+            $table->string('image', 250);
             $table->timestamps();
         });
     }

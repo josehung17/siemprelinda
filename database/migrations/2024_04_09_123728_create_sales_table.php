@@ -13,6 +13,18 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('employee_id')
+                    ->constrained()
+                    ->cascadeOnDetele();
+            $table->foreignId('customer_id')
+                    ->constrained()
+                    ->cascadeOnDetele();
+            $table->foreignId('iva_id')
+                    ->constrained()
+                    ->cascadeOnDetele();
+            $table->foreignId('store_id')
+                    ->constrained()
+                    ->cascadeOnDetele();       
             $table->timestamps();
         });
     }

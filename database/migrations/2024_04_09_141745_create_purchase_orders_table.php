@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('purchase_orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('store_id')
+                    ->constrained()
+                    ->cascadeOnDetele();
+            $table->foreignId('employee_id')
+                    ->constrained()
+                    ->cascadeOnDetele();
+            $table->enum('status', ['created', 'in process', 'processed'] );
             $table->timestamps();
         });
     }

@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('exchage_rates', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('change_id')
+                    ->constrained()
+                    ->cascadeOnDetele();
+            $table->float('count', 8, 2);
             $table->timestamps();
         });
     }

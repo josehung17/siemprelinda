@@ -12,7 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products_suppliers', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('supplier_id')
+                    ->constrained()
+                    ->cascadeOnDetele();
+            $table->foreignId('product_id')
+                    ->constrained()
+                    ->cascadeOnDetele();
+            $table->float('price', 8, 2);
+            $table->enum('quality', ['low', 'medium', 'high']);
             $table->timestamps();
         });
     }

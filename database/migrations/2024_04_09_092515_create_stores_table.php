@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 250);
+            $table->string('phone', 14);
+            $table->string('address', 250);
+            $table->boolean('ivaenable');
             $table->timestamps();
         });
     }
