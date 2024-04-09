@@ -11,19 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('trademark_id')
+        Schema::create('products_suppliers', function (Blueprint $table) {
+             $table->foreignId('supplier_id')
                     ->constrained()
                     ->cascadeOnDetele();
-            $table->foreignId('unit_id')
+            $table->foreignId('product_id')
                     ->constrained()
                     ->cascadeOnDetele();
-            $table->string('name', 100);
-            $table->integer('amountunit');
-            $table->integer('amount');
             $table->float('price', 8, 2);
-            $table->string('image', 250);
+            $table->enum('quality', ['low', 'medium', 'high']);
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('products_suppliers');
     }
 };
