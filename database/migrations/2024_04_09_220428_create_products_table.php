@@ -29,6 +29,7 @@ return new class extends Migration
             $table->integer('amountunit');
             $table->integer('amount');
             $table->float('price', 8, 2);
+            $table->enum('quality', ['low', 'medium', 'high']);
             $table->string('image', 250);
             $table->timestamps();
         });
