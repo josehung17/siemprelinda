@@ -10,6 +10,31 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        /** @var Product $product */
+        static::updating(function ($product) {
+            
+            if ($product->isDirty('image') && ($product->getOriginal('image') !== null)) {
+                Storage::disk('public')->delete($product->getOriginal('image'));
+            }
+        });
+    }
+
+    protected $fillable = ['trademark_id',
+                            'unit_id',
+                            'package_id',
+                            'supplier_id',
+                            'name',
+                            'amountunit',
+                            'amount',
+                            'price',
+                            'quality',
+                            'image'
+                        ];
+
     public function trademark(): BelongsTo
     {
         return $this->belongsTo(Trademark::class);
