@@ -11,6 +11,8 @@ class Store extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'phone', 'address', 'ivaenable'];
+
     public function purchaseOrders(): HasMany
     {
         return $this->hasMany(PurchaseOrder::class);

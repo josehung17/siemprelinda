@@ -12,6 +12,8 @@ class Employee extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['ci', 'department_id', 'name', 'lastname', 'phone', 'email', 'address'];
+
     public function purchaseOrders(): HasMany
     {
         return $this->hasMany(PurchaseOrder::class);
